@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-overdosedf = pd.read_csv(r"C:\Users\athar\Documents\Python Scripts\overdose data.csv")
+overdosedf = pd.read_csv(r"C:\Users\athar\PycharmProjects\Sonification\overdose data.csv")
 overdosedf = overdosedf.replace(',', '', regex=True)
 
 plt.plot(overdosedf["Year"], (overdosedf["All"]), label="All")
