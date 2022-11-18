@@ -15,13 +15,27 @@ while beats > 0:
                                      int((overdosedf["Psychostimulants with abuse potential"][a])),
                                      int((overdosedf["Benzodiazepines"][a])), int((overdosedf["Antidepressants"][a]))]
     beats = beats - 1
-    a = a + 1
+    a += 1
+
+velocitydf = pd.DataFrame(data=mididict)
+print(velocitydf)
+beats = overdosedf["Year"].count()
+
+a = 0
+beats = overdosedf["Year"].count()
+
+while beats > 0:
+    velocitydf.loc[len(velocitydf.index)] = [int((overdosedf["Opioids"][a])), int((overdosedf["Heroin"][a])),
+                                             int((overdosedf["Cocaine"][a])),
+                                             int((overdosedf["Psychostimulants with abuse potential"][a])),
+                                             int((overdosedf["Benzodiazepines"][a])),
+                                             int((overdosedf["Antidepressants"][a]))]
+    beats = beats - 1
+    a += 1
 
 s = mididf.select_dtypes(include=[np.number])
 s = ((s - 547) / (68630 - 547)) * (99 - 64) + 64
 mididf[s.columns] = s
-
-print(mididf)
 
 
 def closest(lst, k):
@@ -38,3 +52,4 @@ for column in mididf:
     j = 0
 mididf = mididf.astype(int)
 print(mididf)
+print(velocitydf)
